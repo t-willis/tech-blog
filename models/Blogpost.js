@@ -16,7 +16,7 @@ Blogpost.init(
             allowNull: false,
         },
         body: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         date_posted: {
@@ -36,6 +36,7 @@ Blogpost.init(
         freezeTableName: true,
         underscored: true,
         modelName: 'blogpost',
+        timestamps: false,
       }
 )
 

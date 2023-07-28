@@ -11,12 +11,8 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         body: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         date_posted: {
@@ -30,12 +26,20 @@ Comment.init(
                 key: 'id',
             },
         },
+        commented_by: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
+        },
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
         modelName: 'comment',
+        timestamps: false,
       }
 )
 
