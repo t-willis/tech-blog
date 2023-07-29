@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
         );
         res.render('homepage', {
             blogposts: blogposts,
+            loggedIn: req.session.loggedIn,
         });
         console.log(blogposts);
     } catch (err) {
@@ -41,8 +42,8 @@ router.get('/blogpost/:id', async (req, res) => {
         blogpost = serialize(dbBlogPostData)
         res.render('blogpost', {
             blogpost: blogpost,
+            loggedIn: req.session.loggedIn,
         });
-        console.log(blogpost);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -52,7 +53,7 @@ router.get('/blogpost/:id', async (req, res) => {
 router.get('/login', async (req, res) => {
     try {
         res.render('login', {
-
+            loggedIn: req.session.loggedIn,
         });
         console.log('someone visited the login page.');
     } catch (err) {
