@@ -49,4 +49,16 @@ router.get('/blogpost/:id', async (req, res) => {
     }
 });
 
+router.get('/login', async (req, res) => {
+    try {
+        res.render('login', {
+
+        });
+        console.log('someone visited the login page.');
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;

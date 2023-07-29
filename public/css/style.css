@@ -6,7 +6,10 @@ header {
 
 nav {
     padding: 20px;
+    margin: 0px 50px;
+    border-bottom: 3px solid lightblue;
 }
+
 
 #postPreview {
     background-color: rgba(250, 235, 215, 0.123);
@@ -33,5 +36,8 @@ nav {
 }
 
 #postTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     font-size: 125%;
 }
