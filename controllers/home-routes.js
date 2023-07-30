@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
         res.render('homepage', {
             blogposts: blogposts,
             loggedIn: req.session.loggedIn,
+            username: req.session.username,
         });
     } catch (err) {
         console.log(err);
@@ -37,19 +38,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
             where: {
                 posted_by: req.session.userId,
             },
-            include: [
-                {
-                    model: User,
-                    attributes: ['username'],
-                },
-            ],
         });
         
         const blogposts = serialize(dbBlogPostData);
         res.render('dashboard', {
             blogposts: blogposts,
             loggedIn: req.session.loggedIn,
-            username: req.session.username,
         });
     } catch (err) {
         console.log(err);
