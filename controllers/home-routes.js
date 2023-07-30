@@ -40,21 +40,23 @@ router.get('/blogpost/:id', withAuth, async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['body', 'username'],
+                    attributes: ['body', 'commented_by'],
                 },
             ],
         });
-        // const dbCommentData = await Comment.findAll({});
+        const dbUserData = await User.findAll({
+            attributes: ['id', 'username'],
+        });
 
         const blogpost = serialize(dbBlogPostData);
-        // const comments = serialize(dbCommentData);
+        const users = serialize(dbUserData);
 
         res.render('blogpost', {
             blogpost: blogpost,
             loggedIn: req.session.loggedIn,
-            // comments: comments,
+            users: users,
         });
-        console.log(blogpost);
+        console.log(users);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
