@@ -14,13 +14,14 @@
     </div>
   </div>
 </div>
-    <div id="postComments" class="grid">
+    <div id="postComments">
       {{#each blogpost.comments}}
       <div id="singleComment">
+        {{commented_by}} commented:
+        <hr />
         {{body}}
         </div>
         <div>
-        {{commented_by}}
       </div>
       {{/each}}
     </div>

@@ -11,6 +11,7 @@ router.post('/', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
+            req.session.username = dbUserData.username;
 
             res.status(200).json(dbUserData);
         });
@@ -28,6 +29,7 @@ router.post('/login', async (req, res) => {
             },
         });
 
+
         if (!dbUserData) {
             res.status(400).json({ message: 'incorrect email or password' });
             return;
@@ -40,10 +42,15 @@ router.post('/login', async (req, res) => {
             return;
         }
 
+
+
         req.session.save(() => {
             req.session.loggedIn = true;
+            req.session.username = dbUserData.username;
+            req.session.userId = dbUserData.id;
             res.status(200).json({ user: dbUserData, message: 'logged in' });
         });
+        console.log(req.session.userId);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

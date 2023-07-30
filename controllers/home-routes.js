@@ -30,6 +30,33 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/dashboard', withAuth, async (req, res) => {
+    try {
+
+        const dbBlogPostData = await Blogpost.findAll({
+            where: {
+                posted_by: req.session.userId,
+            },
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+            ],
+        });
+        
+        const blogposts = serialize(dbBlogPostData);
+        res.render('dashboard', {
+            blogposts: blogposts,
+            loggedIn: req.session.loggedIn,
+            username: req.session.username,
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
 router.get('/blogpost/:id', withAuth, async (req, res) => {
     try {
         const dbBlogPostData = await Blogpost.findByPk(req.params.id, {
@@ -67,10 +94,7 @@ router.get('/blogpost/:id', withAuth, async (req, res) => {
         res.render('blogpost', {
             blogpost: blogpost,
             loggedIn: req.session.loggedIn,
-            users: users,
         });
-        console.log(users);
-        console.log(blogpost);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
