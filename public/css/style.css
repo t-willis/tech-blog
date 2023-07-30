@@ -22,11 +22,13 @@ nav {
     margin: 20px;
     padding-left: 10px;
     padding-right: 10px;
-    border: 2px solid black;
+    transition: 0.3s;
 }
 
 #postPreview:hover {
-    background-color: rgba(250, 235, 215, 0.384);
+    background-color: rgba(250, 235, 215, 0.226);
+    transition: 0.3s;
+    box-shadow: 0 0 10px 5px rgba(128, 128, 128, 0.281);
 }
 
 #singlePost, #singleComment {
@@ -41,4 +43,8 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     font-size: 125%;
+}
+
+a:hover {
+    text-decoration: none;
 }
