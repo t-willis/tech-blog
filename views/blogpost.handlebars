@@ -14,3 +14,13 @@
     </div>
   </div>
 </div>
+    <div id="postComments">
+      {{#each blogpost.comments}}
+      <div id="singleComment">
+        {{body}}
+        </div>
+        <div>
+        {{commented_by}}
+      </div>
+      {{/each}}
+    </div>

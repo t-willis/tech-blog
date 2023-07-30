@@ -29,7 +29,7 @@ nav {
     background-color: rgba(250, 235, 215, 0.384);
 }
 
-#singlePost {
+#singlePost, #singleComment {
     background-color: rgba(250, 235, 215, 0.123);
     border-radius: 15px;
     margin: 20px;

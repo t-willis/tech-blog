@@ -16,6 +16,11 @@ const commentData = [
         commented_on: 3,
         commented_by: 2,
     },
+    {
+        body: 'yeh dudes mad',
+        commented_on: 3,
+        commented_by: 1,
+    },
 ];
 
 const seedComment = () => Comment.bulkCreate(commentData);

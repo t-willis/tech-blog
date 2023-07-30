@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Blogpost, Comment, User } = require('../models');
+const withAuth = require('../utils/auth');
 
 const serialize = (data) => JSON.parse(JSON.stringify(data));
 
@@ -13,6 +14,8 @@ router.get('/', async (req, res) => {
                 },
             ],
         });
+
+        
         
         const blogposts = dbBlogpostData.map((blogpost) =>
         blogpost.get({ plain: true })
@@ -21,29 +24,37 @@ router.get('/', async (req, res) => {
             blogposts: blogposts,
             loggedIn: req.session.loggedIn,
         });
-        console.log(blogposts);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
 });
 
-router.get('/blogpost/:id', async (req, res) => {
+router.get('/blogpost/:id', withAuth, async (req, res) => {
     try {
         const dbBlogPostData = await Blogpost.findByPk(req.params.id, {
             include: [
                 {
                     model: User,
-                    attributes: ['username'],
+                    attributes: ['username', 'id'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['body', 'username'],
                 },
             ],
         });
-        
-        blogpost = serialize(dbBlogPostData)
+        // const dbCommentData = await Comment.findAll({});
+
+        const blogpost = serialize(dbBlogPostData);
+        // const comments = serialize(dbCommentData);
+
         res.render('blogpost', {
             blogpost: blogpost,
             loggedIn: req.session.loggedIn,
+            // comments: comments,
         });
+        console.log(blogpost);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
