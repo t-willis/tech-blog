@@ -19,7 +19,7 @@ const commentData = [
     {
         body: 'yeh dudes mad',
         commented_on: 3,
-        commented_by: 1,
+        commented_by: 3,
     },
 ];
 

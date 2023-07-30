@@ -23,6 +23,12 @@ Blogpost.hasMany(Comment, {
 Comment.belongsTo(Blogpost, {
     foreignKey: 'commented_on'
 });
+User.hasMany(Comment, {
+    foreignKey: 'commented_by'
+});
+Comment.belongsTo(User, {
+    foreignKey: 'commented_by'
+});
 
 // Comment.belongsTo(Blogpost, {
 //     foreignKey: ''

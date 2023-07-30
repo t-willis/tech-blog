@@ -51,12 +51,26 @@ router.get('/blogpost/:id', withAuth, async (req, res) => {
         const blogpost = serialize(dbBlogPostData);
         const users = serialize(dbUserData);
 
+        for (let i = 0; i < blogpost.comments.length; i++) {
+            const replaceMe = blogpost.comments[i].commented_by;
+            let replaceWith;
+        
+            for (let u = 0; u < users.length; u++) {
+                if (users[u].id === replaceMe) {
+                    replaceWith = users[u].username;
+                }
+            }
+            blogpost.comments[i].commented_by = replaceWith;
+        };
+
+
         res.render('blogpost', {
             blogpost: blogpost,
             loggedIn: req.session.loggedIn,
             users: users,
         });
         console.log(users);
+        console.log(blogpost);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
