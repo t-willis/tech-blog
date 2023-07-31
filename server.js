@@ -7,7 +7,7 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT ?? 3001;
 
 const sess = {
     secret: 'ad0f5162-bb60-4241-b917-9ee7c40cc770',
