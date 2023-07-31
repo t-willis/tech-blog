@@ -95,7 +95,7 @@ router.get('/blogpost/:id', withAuth, async (req, res) => {
     }
 });
 
-router.get('/login', async (req, res) => {
+router.get('/login', withAuth, async (req, res) => {
     try {
         res.render('login', {
             loggedIn: req.session.loggedIn,
@@ -106,5 +106,17 @@ router.get('/login', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.get('/newblogpost', async (req, res) => {
+    try {
+        res.render('new-blogpost', {
+            loggedIn: req.session.loggedIn,
+            userId: req.session.userId,
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+})
 
 module.exports = router;
