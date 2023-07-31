@@ -29,25 +29,25 @@ There are several functionalities built into this webapp, but I tried to make th
 
 If you are not logged in you will be redirected to the login page when you try to navigate anywhere other than the homepage.
 
-<img src="./assets/images/blog-README1.gif" width="50%">
+<img src="./assets/images/blog-README1.gif" width="60%">
 
 ---
 
 Once you are successfully logged in you can click on any of the blogposts from the homepage and click the 'post a comment' text to reveal the comment form. Type in a comment and click 'Submit comment' to save and post the comment.
 
-<img src="./assets/images/blog-README2.gif" width="50%">
+<img src="./assets/images/blog-README2.gif" width="60%">
 
 ---
 
 To create a new blog post first navigate to your dashboard, then click the 'Add New Post' button to navigate to the form where you can submit a new blog post.
 
-<img src="./assets/images/blog-README3.gif" width="50%">
+<img src="./assets/images/blog-README3.gif" width="60%">
 
 ---
 
 To edit or delete a blog post first navigate to your dashboard, then click on the post you want to edit or delete. From the edit page you can either edit the post title and content then click the 'Submit edited blogpost' button, or you can click the 'Delete post' button to delete that post.
 
-<img src="./assets/images/blog-README4.gif" width="50%">
+<img src="./assets/images/blog-README4.gif" width="60%">
 
 ---
 ## Technologies
