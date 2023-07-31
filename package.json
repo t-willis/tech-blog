@@ -5,8 +5,12 @@
   "main": "server.js",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node seeds/index"
+    "prestart": "node config/init",
+    "start": "node server",
+    "preseed": "node config/init seed",
+    "seed": "node seeds/index",
+    "prewatch": "node config/init",
+    "watch": "nodemon server"
   },
   "author": "",
   "license": "ISC",

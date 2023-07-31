@@ -26,7 +26,6 @@ router.get('/', async (req, res) => {
             loggedIn: req.session.loggedIn,
             username: req.session.username,
         });
-        console.log(req.session);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -104,7 +103,6 @@ router.get('/login', async (req, res) => {
         res.render('login', {
             loggedIn: req.session.loggedIn,
         });
-        console.log('someone visited the login page.');
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -136,7 +134,7 @@ router.get('/editBlogpost/:id', withAuth, async (req, res) => {
         });
         const blogpost = serialize(dbBlogPostData);
         if (req.session.userId === blogpost.posted_by) {
-            console.log('match');
+            console.log('testclg');
         } else {
             res.redirect('/dashboard');
         }
