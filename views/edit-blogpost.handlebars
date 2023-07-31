@@ -1,19 +1,50 @@
 <div>
   <div>
     <h2>Edit blog post</h2>
-    <form class="form updateBlogPost-form">
+    <form class="form editBlogPost-form">
       <div>
-        <label for="updateBlogPost-title">Title:</label>
-        <input type="text" id="updateBlogPost-title" autocomplete="off" value="{{blogpost.title}}"/>
+        <label for="editBlogPost-title">Title:</label>
+        <input
+          type="text"
+          id="editBlogPost-title"
+          autocomplete="off"
+          value="{{blogpost.title}}"
+        />
       </div>
       <div>
-        <label for="updateBlogPost-body">Body:</label>
-        <textarea type="text" id="updateBlogPost-body" style="height: 200px" autocomplete="off">{{blogpost.body}}</textarea>
+        <label for="editBlogPost-body">Body:</label>
+        <textarea
+          type="text"
+          id="editBlogPost-body"
+          style="height: 200px"
+          autocomplete="off"
+        >{{blogpost.body}}</textarea>
       </div>
       <div style="display: none">
-        <input type="text" id="updateBlogPost-posted_by" value="{{userId}}" readonly>
+        <input
+          type="text"
+          id="editBlogPost-post_id"
+          value="{{blogpost.id}}"
+          readonly
+        />
       </div>
-    <button type="submit">Submit blogpost</button>
+      <button type="submit">Submit edited blogpost</button>
     </form>
   </div>
 </div>
+<hr />
+
+<form class="deletePost">
+  <div style="display: none">
+    <input
+      type="text"
+      id="deleteBlogPost-post_id"
+      value="{{blogpost.id}}"
+      readonly
+    />
+  </div>
+  <button type="submit" id="deletePostButton">Delete Post</button>
+</form>
+
+<script src="../js/editBlogpost.js"></script>
+<script src="../js/deleteBlogpost.js"></script>

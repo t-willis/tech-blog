@@ -1,8 +1,8 @@
 
-const enableDeletePost = async (event) => {
-    event.preventDefault();
-    document.querySelector('#deletePostChoice').style.display = "inline";
-};
+// const enableDeletePost = async (event) => {
+//     event.preventDefault();
+//     document.querySelector('#deletePostChoice').style.display = "inline";
+// };
 
-document.querySelector('#deletePost')
-    .addEventListener('click', enableDeletePost);
+// document.querySelector('#deletePost')
+//     .addEventListener('click', enableDeletePost);
