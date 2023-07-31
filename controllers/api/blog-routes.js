@@ -8,24 +8,18 @@ const { Blogpost } = require('../../models');
 //     posted_by: INTEGER SPECIFYING USER,
 // }
 
+
 router.post('/', async (req, res) => {
-    Blogpost.create(req.body)
-    .then((blogpost) => {
-        if (!req.body.title || !req.body.body || !req.body.posted_by) {
-            console.log(`Something went wrong. here's what you submitted:
-            req.body.title: ${req.body.title}
-            req.body.body: ${req.body.body},
-            req.body.posted_by: ${req.body.posted_by}`);
-            return;
-        } else {
+    try {
+        if (req.body.title || req.body.body || req.body.posted_by) {
+            const blogpost = await Blogpost.create(req.body);
             res.json(blogpost);
         }
-    }).catch((err) => {
-        res.json(err);
-    });
-});
-
-
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+})
 
 
 

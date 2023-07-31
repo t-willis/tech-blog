@@ -25,6 +25,7 @@ router.get('/', async (req, res) => {
             loggedIn: req.session.loggedIn,
             username: req.session.username,
         });
+        console.log(req.session);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -33,7 +34,6 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
-
         const dbBlogPostData = await Blogpost.findAll({
             where: {
                 posted_by: req.session.userId,
