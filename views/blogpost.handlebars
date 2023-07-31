@@ -14,14 +14,36 @@
     </div>
   </div>
 </div>
-    <div id="postComments">
-      {{#each blogpost.comments}}
-      <div id="singleComment">
-        {{commented_by}} commented:
-        <hr />
-        {{body}}
-        </div>
-        <div>
-      </div>
-      {{/each}}
+<div id="postComments">
+  {{#each blogpost.comments}}
+    <div id="singleComment">
+      {{commented_by}}
+      commented:
+      <hr />
+      {{body}}
     </div>
+    <div>
+    </div>
+  {{/each}}
+</div>
+<div id="showCommentForm">
+  <p>post a comment</p>
+</div>
+
+{{!-- change this to display: none when testing/live. null is when you want to see it --}}
+<div id="commentForm" style="display: none">
+  <form class="form newComment-form">
+    <div>
+      <label for="newCommentBody">Comment:</label>
+      <input type="text" id="newCommentBody" />
+    </div>
+    <div>
+      <input type="text" id="newComment-commented_by" value="{{userId}}" readonly style="display: none">
+      <input type="text" id="newComment-commented_on" value="{{blogpost.id}}" readonly style="display: none">
+    </div>
+      <button type="submit" style="width: 25%">Submit comment</button>
+  </form>
+</div>
+
+<script src="../../js/enableComment.js"></script>
+<script src="../../js/newComment.js"></script>

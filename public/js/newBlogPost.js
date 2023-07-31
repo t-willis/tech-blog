@@ -20,7 +20,7 @@ const newBlogPostHandler = async (event) => {
     }
 };
 
-console.log('test');
+console.log('blogpost created');
 document
     .querySelector('.newBlogPost-form')
     .addEventListener('submit', newBlogPostHandler);
