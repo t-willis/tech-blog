@@ -4,6 +4,7 @@ const withAuth = require('../utils/auth');
 
 const serialize = (data) => JSON.parse(JSON.stringify(data));
 
+// route to get all blogposts and render homepage
 router.get('/', async (req, res) => {
     try {
         const dbBlogpostData = await Blogpost.findAll({
@@ -32,6 +33,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// route to get all blogposts for logged in user and render dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const dbBlogPostData = await Blogpost.findAll({
@@ -54,6 +56,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
+// route to get single blogpost by id then render page with that blogpost and comments
 router.get('/blogpost/:id', withAuth, async (req, res) => {
     try {
         const dbBlogPostData = await Blogpost.findByPk(req.params.id, {
@@ -98,6 +101,7 @@ router.get('/blogpost/:id', withAuth, async (req, res) => {
     }
 });
 
+// route to render login page
 router.get('/login', async (req, res) => {
     try {
         res.render('login', {
@@ -109,6 +113,7 @@ router.get('/login', async (req, res) => {
     }
 });
 
+// route to render newblogpost page
 router.get('/newblogpost', withAuth, async (req, res) => {
     try {
         res.render('new-blogpost', {
@@ -121,7 +126,7 @@ router.get('/newblogpost', withAuth, async (req, res) => {
     }
 });
 
-
+// route to get blogpost by id, render edit-blogpost page
 router.get('/editBlogpost/:id', withAuth, async (req, res) => {
     try {
         const dbBlogPostData = await Blogpost.findByPk(req.params.id, {

@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
+// use dotenv to pull data for database, password, and user to new instance of sequelize
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,

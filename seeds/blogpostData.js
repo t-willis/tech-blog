@@ -13,7 +13,7 @@ const blogpostData = [
     },
     {
         title: 'Sequelize makes my head hurt',
-        body: 'title',
+        body: 'not much more to it, the title says it all',
         posted_by: 1,
     },
     {

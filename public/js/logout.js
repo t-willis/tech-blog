@@ -1,3 +1,4 @@
+// function to sign out if already logged in
 const logout = async () => {
     const response = await fetch('/api/users/logout', {
       method: 'POST',

@@ -1,3 +1,4 @@
+// function to handle creating a new comment on a given blogpost by id
 const newCommentHandler = async (event) => {
     event.preventDefault();
 

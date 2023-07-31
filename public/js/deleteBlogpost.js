@@ -1,3 +1,4 @@
+// function to handle deleting a blog post by id
 const deleteBlogPostHandler = async (event) => {
     event.preventDefault();
 

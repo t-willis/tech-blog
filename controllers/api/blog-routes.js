@@ -8,7 +8,7 @@ const { Blogpost } = require('../../models');
 //     posted_by: INTEGER SPECIFYING USER,
 // }
 
-
+// post route to create a new blogpost
 router.post('/', async (req, res) => {
     try {
         if (req.body.title || req.body.body || req.body.posted_by) {
@@ -21,6 +21,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// route to delete a given blogpost by id
 router.delete('/:id', async (req, res) => {
     try {
         const deleteData = await Blogpost.destroy({
@@ -34,6 +35,7 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// route to update a given blogpost by id
 router.put("/:id", async (req, res) => {
     try {
         const updateData = await Blogpost.update(req.body, {

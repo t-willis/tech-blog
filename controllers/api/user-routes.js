@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// route to create a new user
 router.post('/', async (req, res) => {
     try {
         const dbUserData = await User.create({
@@ -21,6 +22,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// route to login as an already created user
 router.post('/login', async (req, res) => {
     try {
         const dbUserData = await User.findOne({
@@ -28,7 +30,6 @@ router.post('/login', async (req, res) => {
                 email: req.body.email,
             },
         });
-
 
         if (!dbUserData) {
             res.status(400).json({ message: 'incorrect email or password' });
@@ -42,8 +43,6 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-
-
         req.session.save(() => {
             req.session.loggedIn = true;
             req.session.username = dbUserData.username;
@@ -56,6 +55,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// route to logout a user and destroy cookie
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {

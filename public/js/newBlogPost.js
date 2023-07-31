@@ -1,3 +1,4 @@
+// function to handle creating a new blogpost
 const newBlogPostHandler = async (event) => {
     event.preventDefault();
 
