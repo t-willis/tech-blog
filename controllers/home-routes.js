@@ -13,6 +13,9 @@ router.get('/', async (req, res) => {
                     attributes: ['username'],
                 },
             ],
+            order: [
+                ['id', 'DESC'],
+            ],
         });
 
         
@@ -38,6 +41,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
             where: {
                 posted_by: req.session.userId,
             },
+            order: [
+                ['id', 'DESC'],
+            ],
         });
         
         const blogposts = serialize(dbBlogPostData);
@@ -61,7 +67,7 @@ router.get('/blogpost/:id', withAuth, async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['body', 'commented_by'],
+                    attributes: ['body', 'commented_by', 'date_posted'],
                 },
             ],
         });
@@ -96,7 +102,7 @@ router.get('/blogpost/:id', withAuth, async (req, res) => {
     }
 });
 
-router.get('/login', withAuth, async (req, res) => {
+router.get('/login', async (req, res) => {
     try {
         res.render('login', {
             loggedIn: req.session.loggedIn,
@@ -108,7 +114,7 @@ router.get('/login', withAuth, async (req, res) => {
     }
 });
 
-router.get('/newblogpost', async (req, res) => {
+router.get('/newblogpost', withAuth, async (req, res) => {
     try {
         res.render('new-blogpost', {
             loggedIn: req.session.loggedIn,

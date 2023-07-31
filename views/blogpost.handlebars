@@ -1,12 +1,15 @@
+      <div class="blogpostTitle">
+        {{blogpost.title}}
+      </div>
 <div id="singlePost">
   <div>
     <div id="postTitle">
-      <div>
-        {{blogpost.title}}
-      </div>
-      <div>
+        <div>
         {{blogpost.user.username}}
-      </div>
+        </div>
+        <div>
+        {{blogpost.date_posted}}
+        </div>
     </div>
     <hr />
     <div id="postBody">
@@ -17,10 +20,18 @@
 <div id="postComments">
   {{#each blogpost.comments}}
     <div id="singleComment">
-      {{commented_by}}
-      commented:
+      <div id="singleCommentTitle">
+        <div>
+          {{commented_by}}
+        </div>
+        <div>
+            {{date_posted}}
+        </div>
+      </div>
       <hr />
-      {{body}}
+      <div>
+        {{body}}
+      </div>
     </div>
     <div>
     </div>
@@ -30,18 +41,29 @@
   <p>post a comment</p>
 </div>
 
-{{!-- change this to display: none when testing/live. null is when you want to see it --}}
 <div id="commentForm" style="display: none">
   <form class="form newComment-form">
     <div>
       <label for="newCommentBody">Comment:</label>
-      <input type="text" id="newCommentBody" />
+      <textarea type="text" id="newCommentBody" autocomplete="off"></textarea>
     </div>
     <div>
-      <input type="text" id="newComment-commented_by" value="{{userId}}" readonly style="display: none">
-      <input type="text" id="newComment-commented_on" value="{{blogpost.id}}" readonly style="display: none">
+      <input
+        type="text"
+        id="newComment-commented_by"
+        value="{{userId}}"
+        readonly
+        style="display: none"
+      />
+      <input
+        type="text"
+        id="newComment-commented_on"
+        value="{{blogpost.id}}"
+        readonly
+        style="display: none"
+      />
     </div>
-      <button type="submit" style="width: 25%">Submit comment</button>
+    <button type="submit" style="width: 25%">Submit comment</button>
   </form>
 </div>
 

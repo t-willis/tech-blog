@@ -4,11 +4,11 @@
     <form class="form newBlogPost-form">
       <div>
         <label for="newBlogPost-title">Title:</label>
-        <input type="text" id="newBlogPost-title" />
+        <input type="text" id="newBlogPost-title" autocomplete="off"/>
       </div>
       <div>
         <label for="newBlogPost-body">Body:</label>
-        <input type="text" id="newBlogPost-body" style="height: 200px"/>
+        <textarea type="text" id="newBlogPost-body" style="height: 200px" autocomplete="off"></textarea>
       </div>
       <div style="display: none">
         <input type="text" id="newBlogPost-posted_by" value="{{userId}}" readonly>
