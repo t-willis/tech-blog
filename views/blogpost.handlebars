@@ -1,15 +1,15 @@
-      <div class="blogpostTitle">
-        {{blogpost.title}}
-      </div>
+<div class="blogpostTitle">
+  {{blogpost.title}}
+</div>
 <div id="singlePost">
   <div>
     <div id="postTitle">
-        <div>
+      <div id="postedBy">
         {{blogpost.user.username}}
-        </div>
-        <div>
+      </div>
+      <div>
         {{blogpost.date_posted}}
-        </div>
+      </div>
     </div>
     <hr />
     <div id="postBody">
@@ -25,7 +25,7 @@
           {{commented_by}}
         </div>
         <div>
-            {{date_posted}}
+          {{date_posted}}
         </div>
       </div>
       <hr />
@@ -66,6 +66,9 @@
     <button type="submit" style="width: 25%">Submit comment</button>
   </form>
 </div>
+
+
+
 
 <script src="../../js/enableComment.js"></script>
 <script src="../../js/newComment.js"></script>

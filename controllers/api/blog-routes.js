@@ -19,8 +19,20 @@ router.post('/', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     }
-})
+});
 
+router.delete('/:id', async (req, res) => {
+    try {
+        const deleteData = await Blogpost.destroy({
+            where: {
+                id: req.params.id,
+            },
+        });
+        res.status(200).json(deleteData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 
 
 

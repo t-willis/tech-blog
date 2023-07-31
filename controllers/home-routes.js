@@ -18,8 +18,6 @@ router.get('/', async (req, res) => {
             ],
         });
 
-        
-        
         const blogposts = dbBlogpostData.map((blogpost) =>
         blogpost.get({ plain: true })
         );
@@ -89,7 +87,6 @@ router.get('/blogpost/:id', withAuth, async (req, res) => {
             }
             blogpost.comments[i].commented_by = replaceWith;
         };
-        console.log(blogpost);
 
         res.render('blogpost', {
             blogpost: blogpost,
@@ -117,6 +114,34 @@ router.get('/login', async (req, res) => {
 router.get('/newblogpost', withAuth, async (req, res) => {
     try {
         res.render('new-blogpost', {
+            loggedIn: req.session.loggedIn,
+            userId: req.session.userId,
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+
+router.get('/editBlogpost/:id', withAuth, async (req, res) => {
+    try {
+        const dbBlogPostData = await Blogpost.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['username', 'id'],
+                },
+            ],
+        });
+        const blogpost = serialize(dbBlogPostData);
+        if (req.session.userId === blogpost.posted_by) {
+            console.log('match');
+        } else {
+            res.redirect('/dashboard');
+        }
+        res.render('edit-blogpost', {
+            blogpost: blogpost,
             loggedIn: req.session.loggedIn,
             userId: req.session.userId,
         });

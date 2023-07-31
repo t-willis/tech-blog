@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <h2>Edit blog post</h2>
+    <form class="form updateBlogPost-form">
+      <div>
+        <label for="updateBlogPost-title">Title:</label>
+        <input type="text" id="updateBlogPost-title" autocomplete="off" value="{{blogpost.title}}"/>
+      </div>
+      <div>
+        <label for="updateBlogPost-body">Body:</label>
+        <textarea type="text" id="updateBlogPost-body" style="height: 200px" autocomplete="off">{{blogpost.body}}</textarea>
+      </div>
+      <div style="display: none">
+        <input type="text" id="updateBlogPost-posted_by" value="{{userId}}" readonly>
+      </div>
+    <button type="submit">Submit blogpost</button>
+    </form>
+  </div>
+</div>

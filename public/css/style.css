@@ -55,3 +55,7 @@ a:hover {
     font-size: 150%;
     text-align: center;
 }
+
+#postOptions {
+    text-align: right;
+}
