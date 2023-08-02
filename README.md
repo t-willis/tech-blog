@@ -12,7 +12,7 @@ It all came together on the page with the use of Handlebars to render different 
 
 ---
 ## Installation
-This app is deployed on Heroku: [NOT YET IMPLEMENTED](http://google.com)
+This app is deployed on Heroku: [Click here](https://immense-fortress-78270-b7ac6b6eb7bd.herokuapp.com/)
 
 If you want to deploy this app locally you'll need to do the following:
 
